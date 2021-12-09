@@ -51,16 +51,16 @@ public class FacturaController extends Factura implements Serializable {
         return FacturaGestion.getFacturas();
     }
     
-    public String insertaFactura() {
-        if (FacturaGestion.insertarFactura(this)) {
-            return "listFacturas?faces-redirect=true";
-        } else {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Error", "Posiblemente el idFactura  se encuentra duplicado.");
-            FacesContext.getCurrentInstance().addMessage("insertaFacturaForm:identificacion", msg);
-            return "addFacturas.xhtml";
-        }
-    } 
+//    public String insertaFactura() {
+//        if (FacturaGestion.insertarFactura(this)) {
+//            return "listFacturas?faces-redirect=true";
+//        } else {
+//            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+//                    "Error", "Posiblemente el idFactura  se encuentra duplicado.");
+//            FacesContext.getCurrentInstance().addMessage("insertaFacturaForm:identificacion", msg);
+//            return "addFacturas.xhtml";
+//        }
+//    } 
     
     private static final String DELETE_FACTURAS = "Delete from factura where IDFACTURA=?";
     
@@ -76,49 +76,49 @@ public class FacturaController extends Factura implements Serializable {
         return "listFacturas.xhtml";
     }
     
-        public void respaldoFacturas() {
-        ZipOutputStream out = null;
-        try {
-            String json = FacturaGestion.generarJsonFactura();
-            File f = new File(FacesContext.getCurrentInstance().
-                    getExternalContext().getRealPath("/respaldo") + "Facturas.zip");
-            out = new ZipOutputStream(new FileOutputStream(f));
-            ZipEntry e = new ZipEntry("Facturas.json");
-            out.putNextEntry(e);
-            byte[] data = json.getBytes();
-            out.write(data, 0, data.length);
-            out.closeEntry();
-            out.close();
-            File zipPath = new File(FacesContext.getCurrentInstance().getExternalContext()
-                    .getRealPath("/respaldo") + "Facturas.zip");
-            byte[] zip = Files.readAllBytes(zipPath.toPath());
-
-            HttpServletResponse respuesta
-                    = (HttpServletResponse) FacesContext.getCurrentInstance()
-                            .getExternalContext().getResponse();
-            ServletOutputStream sos = respuesta.getOutputStream();
-            respuesta.setContentType("application/pdf");
-            respuesta.setHeader("Content-disposition", "attachment; filename=Facturas.zip");
-            sos.write(zip);
-            sos.flush();
-            FacesContext.getCurrentInstance().responseComplete();
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FacturaController.class.getName()).log(
-                    Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(FacturaController.class.getName()).log(
-                    Level.SEVERE, null, ex);
-        } finally {
-            try {
-                out.close();
-            } catch (IOException ex) {
-                Logger.getLogger(FacturaController.class.getName()).log(
-                        Level.SEVERE, null, ex);
-            }
-        }
-    }
-        
+//        public void respaldoFacturas() {
+//        ZipOutputStream out = null;
+//        try {
+//            String json = FacturaGestion.generarJsonFactura();
+//            File f = new File(FacesContext.getCurrentInstance().
+//                    getExternalContext().getRealPath("/respaldo") + "Facturas.zip");
+//            out = new ZipOutputStream(new FileOutputStream(f));
+//            ZipEntry e = new ZipEntry("Facturas.json");
+//            out.putNextEntry(e);
+//            byte[] data = json.getBytes();
+//            out.write(data, 0, data.length);
+//            out.closeEntry();
+//            out.close();
+//            File zipPath = new File(FacesContext.getCurrentInstance().getExternalContext()
+//                    .getRealPath("/respaldo") + "Facturas.zip");
+//            byte[] zip = Files.readAllBytes(zipPath.toPath());
+//
+//            HttpServletResponse respuesta
+//                    = (HttpServletResponse) FacesContext.getCurrentInstance()
+//                            .getExternalContext().getResponse();
+//            ServletOutputStream sos = respuesta.getOutputStream();
+//            respuesta.setContentType("application/pdf");
+//            respuesta.setHeader("Content-disposition", "attachment; filename=Facturas.zip");
+//            sos.write(zip);
+//            sos.flush();
+//            FacesContext.getCurrentInstance().responseComplete();
+//
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(FacturaController.class.getName()).log(
+//                    Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(FacturaController.class.getName()).log(
+//                    Level.SEVERE, null, ex);
+//        } finally {
+//            try {
+//                out.close();
+//            } catch (IOException ex) {
+//                Logger.getLogger(FacturaController.class.getName()).log(
+//                        Level.SEVERE, null, ex);
+//            }
+//        }
+//    }
+//        
         
     
 }

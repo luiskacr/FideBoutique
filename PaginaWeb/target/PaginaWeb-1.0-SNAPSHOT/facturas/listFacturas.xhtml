@@ -18,23 +18,23 @@
                                          copy="true"
                                          print="true">
 
-                                <b:dataTableColumn value="#{factura.idFactura}"
-                                                   label="ID Factura"
+                                <b:dataTableColumn value="#{factura.USER_ID}"
+                                                   label="ID"
                                                    width="9%"/>
-                                <b:dataTableColumn value="#{factura.idUsuario}"
+                                <b:dataTableColumn value="#{factura.DATE_SELL}"
                                                    label="ID Vendedor"
                                                    width="9%"/>
-                                <b:dataTableColumn value="#{factura.nombreCliente}"
-                                                   label="Nombre Cliente"
-                                                   width="15%"/>
-                                <b:dataTableColumn value="#{factura.direccion}"
-                                                   label="Direccion"
-                                                   width="19%"/>
-                                <b:dataTableColumn value="#{factura.detalle}"
-                                                   label="Detalle"
-                                                   width="19%"/>
-                                <b:dataTableColumn value="#{factura.total}"
+                                <b:dataTableColumn value="#{factura.SALE_TOTAL}"
                                                    label="Total"
+                                                   width="15%"/>
+                                <b:dataTableColumn value="#{factura.DISCOUNT_ID}"
+                                                   label="ID Descuento"
+                                                   width="19%"/>
+                                <b:dataTableColumn value="#{factura.PAYMENT_TYPE_ID}"
+                                                   label="ID Tipo de Pago"
+                                                   width="19%"/>
+                                <b:dataTableColumn value="#{factura.PAYMENT_STATE_ID}"
+                                                   label="ID Estado del Pago"
                                                    width="19%"/>
 
                                 <b:dataTableColumn style="text-align: center" label="" width="2%">

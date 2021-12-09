@@ -23,47 +23,48 @@ public class LoginController extends user implements Serializable {
     private String selectedTemplatePrincipal = null;
 
     public String valida() {
-        
+
         user usuario = LoginGestion.valida(this.getUSER_NAME(), this.getPASSWORD());
-        
+
         if (usuario != null) {
-            
+
             this.setUSER_NAME(usuario.getUSER_NAME());
             this.setUSER_ROL(usuario.getUSER_ROL());
-
-            //Selecciona la plantilla según el rol para todos los demás XHTML
-            if (usuario.getUSER_ROL().equals("Admin")) {
-                selectedTemplate = "../resources/templates/plantillaADMIN.xhtml"; //webapp
-            } else {
-                if (usuario.getUSER_ROL().equals("Supervisor")) {
-                    selectedTemplate = "../resources/templates/plantillaVEND.xhtml";
-                } else {
-                    if (usuario.getUSER_ROL().equals("dependent")) {
-                        selectedTemplate = "../resources/templates/plantillaRESP.xhtml";
-                    } else {
-                        if (usuario.getUSER_ROL() == null) {
-                            selectedTemplate = "../resources/templates/plantillaADMIN.xhtml";
-                        }
-                    }
-                }
-            }
-
-            //Selecciona la plantilla según el rol para 'principal.xhtml'
-            if (usuario.getUSER_ROL().equals("Admin")) {
-                selectedTemplatePrincipal = "./resources/templates/plantillaADMIN.xhtml"; //webapp
-            } else {
-                if (usuario.getUSER_ROL().equals("Supervisor")) {
-                    selectedTemplatePrincipal = "./resources/templates/plantillaVEND.xhtml";
-                } else {
-                    if (usuario.getUSER_ROL().equals("dependent")) {
-                        selectedTemplatePrincipal = "./resources/templates/plantillaRESP.xhtml";
-                    } else {
-                        if (usuario.getUSER_ROL() == null) {
-                            selectedTemplate = "../resources/templates/plantillaADMIN.xhtml";
-                        }
-                    }
-                }
-            }
+            selectedTemplate = "../resources/templates/plantillaADMIN.xhtml";
+            selectedTemplatePrincipal = "./resources/templates/plantillaADMIN.xhtml";
+//            //Selecciona la plantilla según el rol para todos los demás XHTML
+//            if (usuario.getUSER_ROL().equals("Admin")) {
+//                selectedTemplate = "../resources/templates/plantillaADMIN.xhtml"; //webapp
+//            } else {
+//                if (usuario.getUSER_ROL().equals("Supervisor")) {
+//                    selectedTemplate = "../resources/templates/plantillaVEND.xhtml";
+//                } else {
+//                    if (usuario.getUSER_ROL().equals("dependent")) {
+//                        selectedTemplate = "../resources/templates/plantillaRESP.xhtml";
+//                    } else {
+//                        if (usuario.getUSER_ROL() == null) {
+//                            selectedTemplate = "../resources/templates/plantillaADMIN.xhtml";
+//                        }
+//                    }
+//                }
+//            }
+//
+//            //Selecciona la plantilla según el rol para 'principal.xhtml'
+//            if (usuario.getUSER_ROL().equals("Admin")) {
+//                selectedTemplatePrincipal = "./resources/templates/plantillaADMIN.xhtml"; //webapp
+//            } else {
+//                if (usuario.getUSER_ROL().equals("Supervisor")) {
+//                    selectedTemplatePrincipal = "./resources/templates/plantillaVEND.xhtml";
+//                } else {
+//                    if (usuario.getUSER_ROL().equals("dependent")) {
+//                        selectedTemplatePrincipal = "./resources/templates/plantillaRESP.xhtml";
+//                    } else {
+//                        if (usuario.getUSER_ROL() == null) {
+//                            selectedTemplate = "../resources/templates/plantillaADMIN.xhtml";
+//                        }
+//                    }
+//                }
+//            }
 
             //retorna a la página principal
             return "principal?faces-redirect=true";

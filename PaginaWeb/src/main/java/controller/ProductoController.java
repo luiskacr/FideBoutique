@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import gestion.ProductoGestion;
@@ -20,23 +15,14 @@ import model.Conexion;
 import model.Productos;
 
 /**
- *
  * @author fabry
  */
 @Named(value = "productoController")
 @SessionScoped
 public class ProductoController extends Productos implements Serializable {
 
-    /**
-     * Creates a new instance of ProductoController
-     */
     public ProductoController() {
     }
-
-    public List<String> getProveedor() {
-        return ProductoGestion.getProveedor();
-    }
-    private List<String> prov = ProductoGestion.getProveedor();
 
     public List<Productos> getProductos() {
         return ProductoGestion.getProductos();
@@ -45,10 +31,15 @@ public class ProductoController extends Productos implements Serializable {
     public String editProd(String id) {
         Productos prod = ProductoGestion.getProd(id);
         if (prod != null) {
-            this.setId(prod.getId());
-            this.setIdProv(prod.getIdProv());
-            this.setNombreProd(prod.getNombreProd());
-            this.setCantidad(prod.getCantidad());
+            this.setPRODUCT_ID(prod.getPRODUCT_ID());
+            this.setPRODUCT_NAME(prod.getPRODUCT_NAME());
+            this.setTYPE_PRODUCT_ID(prod.getTYPE_PRODUCT_ID());
+            this.setDEPARMENT_PRODUCT_ID(prod.getDEPARMENT_PRODUCT_ID());
+            this.setBRAND_PRODUCT_ID(prod.getBRAND_PRODUCT_ID());
+            this.setPRODUCT_DESCRIPTION(prod.getPRODUCT_DESCRIPTION());
+            this.setPRODUCT_QUANTITIES(prod.getPRODUCT_QUANTITIES());
+            this.setPRODUCT_PRICE(prod.getPRODUCT_PRICE());
+
             return "editProductos?faces-redirect=true";
 
         } else {
@@ -84,7 +75,7 @@ public class ProductoController extends Productos implements Serializable {
 
     }
 
-    private static final String DELETE_PRODUCTOS = "Delete from PRODUCTOS where IDPRODUCTO=?";
+    private static final String DELETE_PRODUCTOS = "DELETE PRODUCT WHERE PRODUCT_ID=?";
 
     public String delProd(int id) {
         try {
@@ -97,4 +88,21 @@ public class ProductoController extends Productos implements Serializable {
         }
         return "listProductos.xhtml";
     }
+
+    //---------------------------------------------------------------
+    // SELECT DE ID's FORANEAS
+    //---------------------------------------------------------------
+    public List<String> getType() {
+        return ProductoGestion.getType();
+    }
+    //private List<String> type = ProductoGestion.getProveedor();
+
+    public List<String> getDept() {
+        return ProductoGestion.getDept();
+    }
+
+    public List<String> getBrand() {
+        return ProductoGestion.getBrand();
+    }
+
 }

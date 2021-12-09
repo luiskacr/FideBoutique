@@ -16,7 +16,7 @@ import model.Factura;
 
 public class FacturaGestion {
 
-    private static final String SQL_SELECT_Facturas = "SELECT * FROM factura";
+    private static final String SQL_SELECT_Facturas = "SELECT * FROM INVOICE";
     private static final String SQL_SELECT_Factura = "SELECT * FROM factura where idFactura=?";
     private static final String SQL_INSERT_Facturas = "INSERT INTO factura (idUsuario,nombreCliente,Direccion,detalle,Total) VALUES (?,?,?,?,?)";
     private static final String SQL_SELECT_ID = "SELECT idUsuario FROM usuario";
@@ -47,10 +47,10 @@ public class FacturaGestion {
             while (datos != null && datos.next()) {
                 lista.add(new Factura(
                         datos.getInt(1),
-                        datos.getString(2),
-                        datos.getString(3),
-                        datos.getString(4),
-                        datos.getString(5),
+                        datos.getDate(2),
+                        datos.getFloat(3),
+                        datos.getInt(4),
+                        datos.getInt(5),
                         datos.getInt(6)
                 ));
             }
@@ -74,22 +74,22 @@ public class FacturaGestion {
             while (datos != null && datos.next()) {
                 factura = new Factura(
                         datos.getInt(1),
-                        datos.getString(2),
-                        datos.getString(3),
-                        datos.getString(4),
-                        datos.getString(5),
-                        datos.getInt(6));
-
+                        datos.getDate(2),
+                        datos.getFloat(3),
+                        datos.getInt(4),
+                        datos.getInt(5),
+                        datos.getInt(6
+                ));
             }
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(FacturaGestion.class.getName()).
                     log(Level.SEVERE, null, ex);
         }
         return factura;
     }
 
-    public static boolean insertarFactura(Factura factura) {
+   /* public static boolean insertarFactura(Factura factura) {
         try {
             PreparedStatement sentencia = Conexion.getConexion().
                     prepareStatement(SQL_INSERT_Facturas);
@@ -108,6 +108,7 @@ public class FacturaGestion {
         return false;
 
     }
+
 
     public static String generarJsonFactura() {
         Factura factura = null;
@@ -152,5 +153,5 @@ public class FacturaGestion {
         }
         return tiraJson;
     }
-
+*/
 }

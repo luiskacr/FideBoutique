@@ -1,70 +1,75 @@
 package model;
 
+import java.util.Date;
+
 public class Factura {
-    private int idFactura;
-    private String idUsuario;
-    private String nombreCliente;
-    private String Direccion;
-    private String Detalle;
-    private double total;
+
+    private int USER_ID;
+    private Date DATE_SELL;
+    private float SALE_TOTAL;
+    private int DISCOUNT_ID;
+    private int PAYMENT_TYPE_ID;
+    private int PAYMENT_STATE_ID;
 
     public Factura() {
+
     }
 
-    public Factura(int idFactura, String idUsuario, String nombreCliente, String Direccion, String Detalle, double total) {
-        this.idFactura = idFactura;
-        this.idUsuario = idUsuario;
-        this.nombreCliente = nombreCliente;
-        this.Direccion = Direccion;
-        this.Detalle = Detalle;
-        this.total = total;
+    public Factura(int USER_ID, Date DATE_SELL, float SALE_TOTAL, int DISCOUNT_ID, int PAYMENT_TYPE_ID, int PAYMENT_STATE_ID) {
+        this.USER_ID = USER_ID;
+        this.DATE_SELL = DATE_SELL;
+        this.SALE_TOTAL = SALE_TOTAL;
+        this.DISCOUNT_ID = DISCOUNT_ID;
+        this.PAYMENT_TYPE_ID = PAYMENT_TYPE_ID;
+        this.PAYMENT_STATE_ID = PAYMENT_STATE_ID;
     }
 
-    public int getIdFactura() {
-        return idFactura;
+    public int getUSER_ID() {
+        return USER_ID;
     }
 
-    public void setIdFactura(int idFactura) {
-        this.idFactura = idFactura;
+    public void setUSER_ID(int USER_ID) {
+        this.USER_ID = USER_ID;
     }
 
-    public String getIdUsuario() {
-        return idUsuario;
+    public Date getDATE_SELL() {
+        return DATE_SELL;
     }
 
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setDATE_SELL(Date DATE_SELL) {
+        this.DATE_SELL = DATE_SELL;
     }
 
-    public String getNombreCliente() {
-        return nombreCliente;
+    public float getSALE_TOTAL() {
+        return SALE_TOTAL;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    public void setSALE_TOTAL(float SALE_TOTAL) {
+        this.SALE_TOTAL = SALE_TOTAL;
     }
 
-    public String getDireccion() {
-        return Direccion;
+    public int getDISCOUNT_ID() {
+        return DISCOUNT_ID;
     }
 
-    public void setDireccion(String Direccion) {
-        this.Direccion = Direccion;
+    public void setDISCOUNT_ID(int DISCOUNT_ID) {
+        this.DISCOUNT_ID = DISCOUNT_ID;
     }
 
-    public String getDetalle() {
-        return Detalle;
+    public int getPAYMENT_TYPE_ID() {
+        return PAYMENT_TYPE_ID;
     }
 
-    public void setDetalle(String Detalle) {
-        this.Detalle = Detalle;
+    public void setPAYMENT_TYPE_ID(int PAYMENT_TYPE_ID) {
+        this.PAYMENT_TYPE_ID = PAYMENT_TYPE_ID;
     }
 
-    public double getTotal() {
-        return total;
+    public int getPAYMENT_STATE_ID() {
+        return PAYMENT_STATE_ID;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setPAYMENT_STATE_ID(int PAYMENT_STATE_ID) {
+        this.PAYMENT_STATE_ID = PAYMENT_STATE_ID;
     }
+
 }

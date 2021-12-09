@@ -11,51 +11,101 @@
         <ui:composition template="#{loginController.selectedTemplate}">
             <ui:define name="content">
                 <h:form id="editProdForm">
-                    <b:panel title="EDITAR PRODUCTO" look="success" collapsible="false">
+                    <b:panel title="EDITAR PRODUCTO" look="info" collapsible="false">
 
                         <b:row>
                             <b:column medium-screen="2">
-                                <h:outputText value="Nombre Producto:"/>                                    
+                                <h:outputText value="Nombre Producto"/>                                    
                             </b:column>
                             <b:column medium-screen="4">
-                                <b:inputText placeholder="Nombre Producto" id="prod" required="true" value="#{productoController.nombreProd}" autocomplete="false" />                                    
+                                <b:inputText placeholder="Nombre Producto" id="prod" required="true" value="#{productoController.PRODUCT_NAME}" autocomplete="false" />                                    
                             </b:column>
                             <b:column medium-screen="6" style-class="message">
                                 <b:message for="prod"/>
                             </b:column>
                         </b:row>
-                        
+
                         <b:row>
                             <b:column medium-screen="2">
-                                <h:outputText value="Proveedor:"/>                                    
+                                <h:outputText value="ID Tipo"/>                                    
                             </b:column>
                             <b:column medium-screen="4">
-                                <b:selectOneMenu value="#{productoController.idProv}" required="true" >
-                                    <f:selectItem itemLabel="(Seleccione un Proveedor)" itemValue="" />
-                                    <f:selectItems value="#{productoController.proveedor}" />
+                                <b:selectOneMenu value="#{productoController.TYPE_PRODUCT_ID}" required="true" >
+                                    <f:selectItem itemLabel="(Seleccione un tipo)" id="type" itemValue="" />
+                                    <f:selectItems value="#{productoController.type}" />
                                 </b:selectOneMenu>
                             </b:column>
                             <b:column medium-screen="6" style-class="message">
-                                <b:message for="proveedor"/>
+                                <b:message for="type"/>
                             </b:column>
                         </b:row>
 
                         <b:row>
-
                             <b:column medium-screen="2">
-                                <h:outputText value="Unidades:"/>                                    
+                                <h:outputText value="ID Departamento"/>                                    
                             </b:column>
+                            <b:column medium-screen="4">
+                                <b:selectOneMenu value="#{productoController.DEPARMENT_PRODUCT_ID}" required="true" >
+                                    <f:selectItem itemLabel="(Seleccione un departamento)" id="dept" itemValue="" />
+                                    <f:selectItems value="#{productoController.dept}" />
+                                </b:selectOneMenu>
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="dept"/>
+                            </b:column>
+                        </b:row>
 
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="ID Marca"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:selectOneMenu value="#{productoController.BRAND_PRODUCT_ID}" id="brand" required="true" >
+                                    <f:selectItem itemLabel="(Seleccione una marca)" itemValue="" />
+                                    <f:selectItems value="#{productoController.brand}" />
+                                </b:selectOneMenu>
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="brand"/>
+                            </b:column>
+                        </b:row>
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Descripción Producto"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="Nombre Producto" id="desc" required="true" value="#{productoController.PRODUCT_DESCRIPTION}" autocomplete="false" />                                    
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="desc"/>
+                            </b:column>
+                        </b:row>
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Unidades"/>                                    
+                            </b:column>
                             <b:column medium-screen="4">
                                 <div class="knob-container  ui-corner-all">
-                                    <p:knob max="1000" id="cant" required="true" value="#{productoController.cantidad}"/>
+                                    <p:knob max="1000" id="cant" required="true" value="#{productoController.PRODUCT_QUANTITIES}"/>
                                 </div>
                             </b:column>
-
                             <b:column medium-screen="6" style-class="message">
                                 <b:message for="cant"/>
                             </b:column>
-
+                        </b:row>       
+                        
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Precio"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText mask="numeric" required="true" id="precio" value="#{productoController.PRODUCT_PRICE}" autocomplete="false"/>                                    
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="precio"/>
+                            </b:column>
                         </b:row>
                         
                         <b:row>
