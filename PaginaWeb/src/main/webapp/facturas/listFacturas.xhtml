@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="Lista de Facturas" look="primary" collapsible="false">
+                            <b:dataTable value="#{facturaController.facturas}"
+                                         var="factura" 
+                                         excel="true" 
+                                         csv="true"
+                                         pdf="true"
+                                         columnVisibility="true"
+                                         copy="true"
+                                         print="true">
+
+                                <b:dataTableColumn value="#{factura.idFactura}"
+                                                   label="ID Factura"
+                                                   width="9%"/>
+                                <b:dataTableColumn value="#{factura.idUsuario}"
+                                                   label="ID Vendedor"
+                                                   width="9%"/>
+                                <b:dataTableColumn value="#{factura.nombreCliente}"
+                                                   label="Nombre Cliente"
+                                                   width="15%"/>
+                                <b:dataTableColumn value="#{factura.direccion}"
+                                                   label="Direccion"
+                                                   width="19%"/>
+                                <b:dataTableColumn value="#{factura.detalle}"
+                                                   label="Detalle"
+                                                   width="19%"/>
+                                <b:dataTableColumn value="#{factura.total}"
+                                                   label="Total"
+                                                   width="19%"/>
+
+                                <b:dataTableColumn style="text-align: center" label="" width="2%">
+                                    <b:commandButton value="Eliminar" look="danger" icon="trash" action="#{facturaController.delFactura(factura.idFactura)}"/>      
+                                </b:dataTableColumn>
+
+                            </b:dataTable>
+                            <b:button value="Ingresar Nueva Factura" look="success" icon="add" href="#{request.contextPath}/faces/facturas/addFacturas.xhtml"/>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

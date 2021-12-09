@@ -1,0 +1,55 @@
+#body:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+
+    display: block;
+    background-image: url('../img/fondo2.jpg');
+    width: 1920px;
+    height: 1080px;
+    transform: scale(1.1);  
+
+    -webkit-filter: blur(8px);
+    -moz-filter: blur(8px);
+    -o-filter: blur(8px);
+    -ms-filter: blur(8px);
+    filter: blur(8px);
+}
+
+#body {
+    position: static;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.panel{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 200px;
+    margin: auto;
+    margin-left: -300px;
+    margin-top: -100px;
+}
+
+.panel-default > .panel-heading {
+    color: white !important;
+    font: 15px Georgia;
+    background-color: #0b9994 !important;
+}
+.btn{
+    width: 50%;
+    margin-left: 25%;
+    color: white !important;
+    background-color: #0b9994 !important ;
+}
+
+.message{
+    width: 300px;
+}

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>        
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form id="addTransForm">
+                    <b:panel title="AÑADIR TRANSPORTE" look="success" collapsible="false">
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Nombre:"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="Nombre" id="nombre" required="true" value="#{transporteController.nombreT}" autocomplete="false" />                                    
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="nombre"/>
+                            </b:column>
+                        </b:row>
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="ID Factura:"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:selectOneMenu value="#{transporteController.idFactura}" required="true" >
+                                    <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                    <f:selectItems value="#{transporteController.factura}" />
+                                </b:selectOneMenu>
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="factura"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="4">
+                                <b:commandButton value="Ingresar" look="success" iconAwesome="far fa-check-square" style="width:100px; margin:1px" action="#{transporteController.insertTrans()}"></b:commandButton>
+                            </b:column>
+                        </b:row>
+                    </b:panel>
+                </h:form>                
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Proformas</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="Lista de Proformas"
+                                 look="primary"
+                                 collapsed="false">
+                            <b:dataTable value="#{proformaController.proformas}"
+                                         var="proforma"
+                                         pdf="true"
+                                         excel="true">
+                                <b:dataTableColumn value="#{proforma.idProforma}"
+                                                   label="Identificador Proforma"
+                                                   width="8%"/>
+                                <b:dataTableColumn value="#{proforma.nombreCliente}"
+                                                   label="Nombre Cliente"
+                                                   width="8%"/>
+                                <b:dataTableColumn value="#{proforma.detalle}"
+                                                   label="Detalle"
+                                                   width="20%"/>
+                                <b:dataTableColumn value="#{proforma.telefono}"
+                                                   label="Telefono"
+                                                   width="20%"/>
+                                <b:dataTableColumn value="#{proforma.fechaEmitida}"
+                                                   label="Fecha Emitida"
+                                                   width="15%"/>
+                                <b:dataTableColumn value="#{proforma.vigencia}"
+                                                   label="Vigencia"
+                                                   width="10%"/>
+                                <b:dataTableColumn value="#{proforma.aproximadoTotal}"
+                                                   label="Total Aproximado"
+                                                   width="10%"/>
+                                <b:dataTableColumn style="text-align: center"
+                                                
+                                                   label="Accion"
+                                                   width="10%">
+                                    <b:commandButton value="Editar"
+                                                     action="#{proformaController.editaProformas(proforma.idProforma)}" />
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                            <b:button value="Ingresar Nueva Proforma"
+                                      look="success"
+                                      style="width: 40%"
+                                      href="#{request.contextPath}/faces/proforma/addProforma.xhtml">
+                            </b:button>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

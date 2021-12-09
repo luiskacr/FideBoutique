@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>        
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form id="addProdForm">
+                    <b:panel title="AÑADIR PRODUCTO" look="success" collapsible="false">
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Nombre Producto:"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="Nombre Producto" id="prod" required="true" value="#{productoController.nombreProd}" autocomplete="false" />                                    
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="prod"/>
+                            </b:column>
+                        </b:row>
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Proveedor:"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:selectOneMenu value="#{productoController.idProv}" required="true" >
+                                    <f:selectItem itemLabel="(Seleccione un Proveedor)" itemValue="" />
+                                    <f:selectItems value="#{productoController.proveedor}" />
+                                </b:selectOneMenu>
+                            </b:column>
+
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="proveedor"/>
+                            </b:column>
+                        </b:row>
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Unidades:"/>                                    
+                            </b:column>
+
+                            <b:column medium-screen="4">
+                                <div class="knob-container  ui-corner-all">
+                                    <p:knob max="1000" id="cant" required="true" value="#{productoController.cantidad}"/>
+                                </div>
+                            </b:column>
+
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="cant"/>
+                            </b:column>
+
+                        </b:row>       
+                        <b:row>
+                            <b:column medium-screen="4">
+                                <b:commandButton value="Ingresar" look="success" iconAwesome="far fa-check-square" style="width:100px; margin:1px" action="#{productoController.insertProd()}"></b:commandButton>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="4">
+                                <b:commandButton value="Cancelar" look="danger" iconAwesome="far fa-window-close" style="width:100px; margin:1px" action="listProductos.xhtml"></b:commandButton>
+                            </b:column>
+                        </b:row>
+                    </b:panel>
+                </h:form>                
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

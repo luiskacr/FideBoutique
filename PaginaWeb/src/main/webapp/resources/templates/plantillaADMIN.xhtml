@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <title>FIDEBOUTIQUE ADMIN</title>
+    </h:head>
+    <h:body>
+        <div class="fondo">
+            <div id="top" class="top">
+                <ui:insert name="top">                
+                    
+                    <b:navBar class="nav" inverse="true" fluid="true" >
+                        <b:navbarLinks pull="left">
+                            <a href="#{request.contextPath}/faces/principal.xhtml"><b:image library="img" name="camisa.png" style-class="img1"/> </a>
+                        </b:navbarLinks>
+                            <b:dropMenu value="Inventario" icon-awesome="fas fa-wrench">
+                                <b:navLink value="Inventario" href="#{request.contextPath}/faces/productos/listProductos.xhtml"/>
+                                <b:navLink value="Agregar Inventario" href="#{request.contextPath}/faces/productos/addProducto.xhtml"/>
+                            </b:dropMenu>
+                            <b:navLink value="Facturas" icon-awesome="fas fa-receipt" href="#{request.contextPath}/faces/facturas/listFacturas.xhtml"/>
+                            
+                            <b:dropMenu value="Clientes" icon-awesome="fas fa-user-tag" >
+                                <b:navLink value="Lista" href=" #{request.contextPath}/faces/clientes/listCliente.xhtml"/>
+                                <b:navLink value="Añadir Nueva Entrada" href="#{request.contextPath}/faces/clientes/addCliente.xhtml"/>
+                                <b:navLink value="Buscar Clientes" href="#{request.contextPath}/faces/clientes/buscarCliente.xhtml"/>
+                            </b:dropMenu>
+                        
+                            <b:navbarLinks pull="right" style-class="hidden-xs">
+                            <b:dropMenu value="${loginController.USER_NAME.toUpperCase()} (ADMIN)" icon-awesome="fa-user-circle">
+                                <b:navLink value="Salir" icon-awesome="fa-sign-out" href="#{request.contextPath}/faces/index.xhtml"/>
+                            </b:dropMenu>
+                        </b:navbarLinks>
+                    </b:navBar> 
+                </ui:insert> 
+            </div>
+
+            <div id="content" class="center_content">
+                <ui:insert name="content">CONTENIDO</ui:insert>
+            </div>
+        </div>
+    </h:body>
+</html>

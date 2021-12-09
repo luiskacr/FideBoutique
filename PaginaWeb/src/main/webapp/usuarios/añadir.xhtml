@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>        
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form id="addUserForm">
+                    <b:panel title="AGREGAR USUARIO" look="success" collapsible="false">
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Nombre de Usuario:"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="Usuario" id="usuario" required="true" value="#{userController.nombreUsuario}" autocomplete="false"/>                                    
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="usuario"/>
+                            </b:column>
+                        </b:row>
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Contraseña:"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputSecret placeholder="Contraseña" id="psw" required="true" value="#{userController.contasena}" autocomplete="false" />                                    
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="psw"/>
+                            </b:column>
+                        </b:row>
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Rol:"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+
+                                <b:selectOneMenu value="#{userController.idRol}" required="true">
+                                    <f:selectItem itemLabel="(Seleccione un Rol)" itemValue="" />
+                                    <f:selectItem itemLabel="ADMIN" itemValue="ADMIN" />
+                                    <f:selectItem itemLabel="RESPALDOS" itemValue="RESPALDOS" />
+                                    <f:selectItem itemLabel="VENDEDOR" itemValue="VENDEDOR"/>
+                                </b:selectOneMenu>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="2"/>
+                            <b:column medium-screen="4">
+                                <b:commandButton value="Ingresar" look="primary" style="width: 100px" action="#{userController.insertUser()}" > </b:commandButton>
+                            </b:column>
+                        </b:row>
+                    </b:panel>
+                </h:form>                
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

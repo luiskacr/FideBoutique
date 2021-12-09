@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <link href="css/css1.css" rel="stylesheet" type="text/css"/>
+        <title>Iniciar Sesión</title>
+    </h:head>
+    <div id = "body">
+        <h:body>
+            <h:form id = "loginForm">
+                <b:panel title = "Iniciar Sesión" look="default" collapsible="false" style-class="panel">
+
+                    <b:row>
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:inputText tooltip="Inserte Su Nombre De Usuario" placeholder="Usuario" id="usuario" autocomplete="false" required="true" requiredMessage="*" value="#{loginController.USER_NAME}">
+                            <f:facet name="prepend">
+                                <b:icon name="user"/>
+                            </f:facet>
+                        </b:inputText>
+                        <b:column medium-screen="1" style-class="message">
+                            <b:message for="usuario"/>
+                        </b:column>
+                    </b:row>
+
+                    <b:row>
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:inputSecret tooltip="Inserte Su Contraseña" placeholder="Contraseña" id="clave" autocomplete="false" required="true" requiredMessage="*" value="#{loginController.PASSWORD}">
+                            <f:facet name="prepend">
+                                <b:iconAwesome value="fa-key"/>
+                            </f:facet>
+                        </b:inputSecret>
+                        <b:column medium-screen="1" style-class="message">
+                            <b:message for="clave"/>
+                        </b:column>
+                    </b:row>
+
+                    <b:row>
+                        <b:commandButton value="Iniciar Sesión" styleClass="btn" action="#{loginController.valida()}" > </b:commandButton>
+                    </b:row>
+
+                </b:panel>
+            </h:form>
+
+        </h:body>
+    </div>
+</html>
+

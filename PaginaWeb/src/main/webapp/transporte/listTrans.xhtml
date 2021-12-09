@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="TRANSPORTE" look="success" collapsible="false">
+                            <b:dataTable value= "#{transporteController.transportes}" var="t">
+                                <b:dataTableColumn value="#{t.idTransporte}" style="text-align: center" label= "ID" width="3%" />
+                                <b:dataTableColumn value="#{t.nombreT}" style="text-align: center" label="Nombre" width="5%"/>
+                                <b:dataTableColumn value="#{t.idFactura}" style="text-align: center" label="ID Factura" width="9%"/>
+                                <b:dataTableColumn style="text-align: center" label="" width="2%">
+                                    <b:commandButton value="Editar" look="success" icon="edit" action="#{transporteController.editTrans(t.idTransporte)}"/>      
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                            <b:button value="Ingresar Nuevo Transporte" look="success" style="width: 33%" href="#{request.contextPath}/faces/transporte/addTrans.xhtml"></b:button>
+                        </b:panel> 
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="Proveedores" look="success" collapsible="false">
+                            <b:dataTable value= "#{proveedoresController.proveedores}" var="p">
+                                <b:dataTableColumn value="#{p.idProveedor}" style="text-align: center" label= "ID" width="3%" />
+                                <b:dataTableColumn value="#{p.nombreProvedor}" style="text-align: center" label="Proveedor" width="5%"/>
+                                <b:dataTableColumn value="#{p.detalle}" style="text-align: center" label="Detalle" width="20%"/>
+                                <b:dataTableColumn value="#{p.telefono}" style="text-align: center" label="Telefono" width="8%"/>
+                                <b:dataTableColumn style="text-align: center" label="" width="2%">
+                                    <b:commandButton value="Editar" look="success" icon="edit" action="#{proveedoresController.editProv(p.idProveedor)}"/>      
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                            <b:button value="Ingresar Nuevo Proveedor" look="success" style="width: 33%" href="#{request.contextPath}/faces/proveedores/addProv.xhtml"></b:button>
+                        </b:panel> 
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

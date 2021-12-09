@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="Comisiones" look="success" collapsible="false">
+                            <b:dataTable value= "#{comisionController.comisiones}" var="c">
+                                <b:dataTableColumn value="#{c.idComision}" style="text-align: center" label= "ID Comision" width="3%" />
+                                <b:dataTableColumn value="#{c.idFactura}" style="text-align: center" label="ID Factura" width="5%"/>
+                                <b:dataTableColumn value="#{c.idUsuario}" style="text-align: center" label="ID Usuario" width="8%"/>
+                                <b:dataTableColumn value="#{c.porcentaje}" style="text-align: center" label="Porcentaje de Comisión" width="8%"/>
+                                <b:dataTableColumn value="#{c.total}" style="text-align: center" label="Total de Comisión" width="8%"/>
+                                <b:dataTableColumn style="text-align: center" label="" width="2%">
+                                    <b:commandButton value="Editar" look="success" icon="edit" action="#{comisionController.editComision(c.idComision)}"/>      
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                            <b:button value="Ingresar Datos de Comisión" look="success" style="width: 33%" href="#{request.contextPath}/faces/comision/addCom.xhtml"></b:button>
+                        </b:panel> 
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

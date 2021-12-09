@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Usuarios</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="Usuarios" look="success" collapsible="false">
+                            <b:dataTable value= "#{userController.users}" var="user">
+                                <b:dataTableColumn value="#{user.idUsuario}" style="text-align: center" label="ID" width="5%"/>
+                                <b:dataTableColumn value="#{user.idRol}" style="text-align: center" label="Rol" width="9%"/>
+                                <b:dataTableColumn value="#{user.nombreUsuario}" style="text-align: center" label="Nombre Usuario" width="8%"/>
+                                <b:dataTableColumn style="text-align: center" label="" width="2%">
+                                    <b:commandButton value="Editar" look="success" icon="edit" action="#{userController.editUser(user.idUsuario)}"/>
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                            <b:button value="Añadir Nuevo" look="success" icon="add" href="#{request.contextPath}/faces/usuarios/añadir.xhtml"/>
+
+                        </b:panel> 
+                    </b:container>
+                </h:form>
+
+            </ui:define>
+        </ui:composition> 
+    </h:body>
+</html>

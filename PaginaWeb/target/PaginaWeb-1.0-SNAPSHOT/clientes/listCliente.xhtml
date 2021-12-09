@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Lista de  Clientes</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="Lista de Clientes" look="primary" collapsible="false">
+                            <b:dataTable value="#{clientesController.clientes}"
+                                         var="cliente" 
+                                         excel="false" 
+                                         csv="false"
+                                         pdf="false"
+                                         columnVisibility="false"
+                                         copy="false"
+                                         print="false">
+
+                                <b:dataTableColumn value="#{cliente.idClientes}"
+                                                   label="Identificación"
+                                                   width="9%"/>
+                                <b:dataTableColumn value="#{cliente.nombreCliente}"
+                                                   label="Nombre"
+                                                   width="15%"/>
+                                <b:dataTableColumn value="#{cliente.direccion}"
+                                                   label="Direccion"
+                                                   width="19%"/>
+                                <b:dataTableColumn value="#{cliente.telefono}"
+                                                   label="Telefono"
+                                                   width="19%"/>
+
+
+
+                                <b:dataTableColumn style="text-align: center"
+                                                   label="Acción"
+                                                   width="10%">
+                                    <b:commandButton value="Editar"
+                                                     action="#{clientesController.editaClientes(cliente.idClientes)}" />                           
+
+                                </b:dataTableColumn>
+
+
+                            </b:dataTable>
+                            <b:button value="Ingresar Nuevo Usuario"
+                                      look="success" 
+                                      style="width: 33%" 
+                                      href="#{request.contextPath}/faces/clientes/addCliente.xhtml">
+                            </b:button>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

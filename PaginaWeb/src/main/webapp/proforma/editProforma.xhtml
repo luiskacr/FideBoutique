@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Editar Proforma</title>
+    </h:head>
+<h:body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form >
+                    <b:container fluid="true">
+                        <b:panel title="Proformas" look="primary">
+                            
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Nombre Cliente:"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Nombre Cliente" 
+                                                 id="nombreCliente" 
+                                                 required="true"
+                                                 value="#{proformaController.nombreCliente}" 
+                                                 autocomplete="false"/>                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="Nombre Cliente"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Detalle:"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Detalle" 
+                                                 id="Detalle" 
+                                                 required="true"
+                                                 value="#{proformaController.detalle}" 
+                                                 autocomplete="false"/>                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="Detalle"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Telefono:"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Telefono" mask="99999999"
+                                                 id="Telefono" 
+                                                 required="true"
+                                                 value="#{proformaController.telefono}" 
+                                                 autocomplete="false"/>                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="Telefono"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Fecha Emitida:"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:datepicker  id="fechaEmitida" 
+                                                   required="true"
+                                                   requiredMessage="Se requiere la fecha"
+                                                   value="#{proformaController.fechaEmitida}" 
+                                                   />                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="fechaEmitida"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Vigencia:"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Vigencia" 
+                                                 id="vigencia" 
+                                                 required="true"
+                                                 value="#{proformaController.vigencia}" 
+                                                 autocomplete="false"/>                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="Vigencia"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Total Aproximado:"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Total Aproximado" 
+                                                 id="AproximadoTotal" mask="numeric"
+                                                 required="true"
+                                                 value="#{proformaController.aproximadoTotal}" 
+                                                 autocomplete="false"/>                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="Total Aproximado"/>
+                                </b:column>
+                            </b:row>
+                           <b:row>
+                                <b:column medium-screen="2"/>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Actualizar"
+                                                     look="primary" 
+                                                     style="width: 33%" 
+                                                     action="#{proformaController.modificarProforma()}">
+                                    </b:commandButton>
+                                     <b:commandButton value="Eliminar" 
+                                                     look="danger" 
+                                                     style="width: 33%"
+                                                     action="#{proformaController.eliminarProforma()}">
+                                    </b:commandButton>
+                                    
+                                </b:column>
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

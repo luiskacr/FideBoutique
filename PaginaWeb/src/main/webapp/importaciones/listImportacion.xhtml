@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Importaciones</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="Lista de Producto Importados"
+                                 look="primary"
+                                 collapsed="false">
+                            <b:dataTable value="#{importacionesController.importaciones}"
+                                         var="importacion"
+                                         pdf="true"
+                                         excel="true">
+                                <b:dataTableColumn value="#{importacion.idImportaciones}"
+                                                   label="Identificador"
+                                                   width="8%"/>
+                                <b:dataTableColumn value="#{importacion.idProveedor}"
+                                                   label="Identificador Proveedor"
+                                                   width="8%"/>
+                                <b:dataTableColumn value="#{importacion.idProducto}"
+                                                   label="Identificador Producto"
+                                                   width="8%"/>
+                                <b:dataTableColumn value="#{importacion.descripcion}"
+                                                   label="Detalle"
+                                                   width="20%"/>
+                                <b:dataTableColumn value="#{importacion.fechaImportacion}"
+                                                   label="Fecha"
+                                                   width="15%"/>
+                                <b:dataTableColumn value="#{importacion.cantidad}"
+                                                   label="Cantidad"
+                                                   width="10%"/>
+                                <b:dataTableColumn style="text-align: center"
+                                                   label="Editar"
+                                                   width="10%">
+                                    <b:commandButton value="Editar"
+                                                     action="#{importacionesController.editaImportaciones(importacion.idImportaciones)}"/>
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                            <b:button value="Ingresar Nueva Importaciones"
+                                      look="success"
+                                      style="width: 40%"
+                                      href="#{request.contextPath}/faces/importaciones/addImportacion.xhtml">
+                            </b:button>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

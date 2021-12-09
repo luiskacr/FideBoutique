@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Lista de  Clientes</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form id="clienteWSForm"> 
+                    <b:container fluid="true">
+                        <b:panel title="CLIENTE" look="success" collapsible="false">
+                            <b:row>
+                                <b:column medium-screen="2"> 
+                                    <h:outputLabel value="ID" for="id"/>
+                                </b:column>
+                                <b:column medium-screen="4"> 
+                                    <b:inputText id="id" value="#{clientesControllerWS.id}"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="5">
+                                    <b:commandButton value="Buscar Todos" icon-awesome="fas fa-users" action="#{clientesControllerWS.getAll()}" look="info" />
+                                </b:column>
+                            </b:row>
+                            <b:row>.</b:row>
+                            <b:row>
+                                <b:column medium-screen="5">
+                                    <b:commandButton value="Buscar Por ID" icon-awesome="fas fa-id-card" action="#{clientesControllerWS.getCliente()}" look="info" />
+                                </b:column>
+                            </b:row>
+                            <b:row>.</b:row>
+
+                            <b:row>
+                                <b:column medium-screen="2"> 
+                                    <h:outputLabel value="Resultado" for="res"/>
+                                </b:column>
+                                <b:column medium-screen="4"> 
+                                    <b:inputTextarea id="res" rows="10" value="#{clientesControllerWS.salida}"/>
+                                </b:column>
+                            </b:row>
+                        </b:panel> 
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
