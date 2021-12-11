@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Factura {
 
+    private int ID_INVOICE;
     private int USER_ID;
     private Date DATE_SELL;
     private float SALE_TOTAL;
@@ -15,13 +16,22 @@ public class Factura {
 
     }
 
-    public Factura(int USER_ID, Date DATE_SELL, float SALE_TOTAL, int DISCOUNT_ID, int PAYMENT_TYPE_ID, int PAYMENT_STATE_ID) {
+    public Factura(int ID_INVOICE, int USER_ID, Date DATE_SELL, float SALE_TOTAL, int DISCOUNT_ID, int PAYMENT_TYPE_ID, int PAYMENT_STATE_ID) {
+        this.ID_INVOICE = ID_INVOICE;
         this.USER_ID = USER_ID;
         this.DATE_SELL = DATE_SELL;
         this.SALE_TOTAL = SALE_TOTAL;
         this.DISCOUNT_ID = DISCOUNT_ID;
         this.PAYMENT_TYPE_ID = PAYMENT_TYPE_ID;
         this.PAYMENT_STATE_ID = PAYMENT_STATE_ID;
+    }
+
+    public int getID_INVOICE() {
+        return ID_INVOICE;
+    }
+
+    public void setID_INVOICE(int ID_INVOICE) {
+        this.ID_INVOICE = ID_INVOICE;
     }
 
     public int getUSER_ID() {

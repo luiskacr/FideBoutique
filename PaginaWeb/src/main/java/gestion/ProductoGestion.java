@@ -13,10 +13,8 @@ public class ProductoGestion {
 
     private static final String SELECT_PRODUCTOS = "SELECT * FROM PRODUCT";
     private static final String SELECT_PRODUCTO = "SELECT * FROM PRODUCT WHERE PRODUCT_ID=?";
-    private static final String INSERT_PRODUCTOS = "INSERT INTO PRODUCT (PRODUCT_NAME, TYPE_PRODUCT_ID, DEPARMENT_PRODUCT_ID, "
-            + "BRAND_PRODUCT_ID, PRODUCT_DESCRIPTION, PRODUCT_QUANTITIES, PRODUCT_PRICE) VALUES(?,?,?,?,?,?,?)";
-    private static final String UPDATE_PRODUCTOS = "UPDATE PRODUCT SET PRODUCT_NAME=?, TYPE_PRODUCT_ID=?, DEPARMENT_PRODUCT_ID=?, BRAND_PRODUCT_ID=?, "
-            + "PRODUCT_DESCRIPTION=?, PRODUCT_QUANTITIES=?, PRODUCT_PRICE=? WHERE PRODUCT_ID=?";
+    private static final String INSERT_PRODUCTOS = "INSERT INTO PRODUCT (PRODUCT_NAME,TYPE_PRODUCT_ID,DEPARMENT_PRODUCT_ID,BRAND_PRODUCT_ID,PRODUCT_DESCRIPTION,PRODUCT_QUANTITIES,PRODUCT_PRICE) VALUES(?,?,?,?,?,?,?)";
+    private static final String UPDATE_PRODUCTOS = "UPDATE PRODUCT SET PRODUCT_NAME=?,TYPE_PRODUCT_ID=?,DEPARMENT_PRODUCT_ID=?,BRAND_PRODUCT_ID=?,PRODUCT_DESCRIPTION=?,PRODUCT_QUANTITIES=?,PRODUCT_PRICE=? WHERE PRODUCT_ID=?";
 
     //------------ SENTENCIAS SELECT DE ID'S FORANEAS -------------------
     private static final String SELECT_TYPE = "SELECT TYPE_PRODUCT_ID FROM TYPE_PRODUCT";
@@ -44,14 +42,14 @@ public class ProductoGestion {
                         rs.getFloat(8)
                 ));
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(ProductoGestion.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return lista;
     }
-
     //Select 1 Producto
+
     public static Productos getProd(String id) {
         Productos prod = null;
         try {
@@ -95,6 +93,7 @@ public class ProductoGestion {
         } catch (SQLException ex) {
             Logger.getLogger(ProductoGestion.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return false;
 
     }
@@ -110,19 +109,21 @@ public class ProductoGestion {
             ps.setString(5, prod.getPRODUCT_DESCRIPTION());
             ps.setInt(6, prod.getPRODUCT_QUANTITIES());
             ps.setFloat(7, prod.getPRODUCT_PRICE());
+            ps.setInt(8, prod.getPRODUCT_ID());
 
             return ps.executeUpdate() > 0;
 
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductoGestion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductoGestion.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
+
         return false;
     }
 
     //---------------------------------------------------------------
     // SELECT DE ID's FORANEAS
     //---------------------------------------------------------------
-    
     //TYPE ID
     public static ArrayList<String> getType() {
         ArrayList<String> lista = new ArrayList<>();
@@ -135,12 +136,13 @@ public class ProductoGestion {
                 lista.add(new String(datos.getString(1)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProductoGestion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoGestion.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
     }
-
     //DEPARTMENT ID
+
     public static ArrayList<String> getDept() {
         ArrayList<String> lista = new ArrayList<>();
 
@@ -152,12 +154,14 @@ public class ProductoGestion {
                 lista.add(new String(datos.getString(1)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProductoGestion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoGestion.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
+
         return lista;
     }
 
-    //BRAND ID
+//BRAND ID
     public static ArrayList<String> getBrand() {
         ArrayList<String> lista = new ArrayList<>();
 
@@ -169,7 +173,8 @@ public class ProductoGestion {
                 lista.add(new String(datos.getString(1)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProductoGestion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductoGestion.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
     }

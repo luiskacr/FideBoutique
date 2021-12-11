@@ -12,7 +12,7 @@
             <ui:define name="content">
                 <h:form>
                     <b:container fluid="true">
-                        <b:panel title="Lista de Clientes" look="primary" collapsible="false">
+                        <b:panel title="CLIENTES" look="info" collapsible="false">
                             <b:dataTable value="#{clientesController.clientes}"
                                          var="cliente" 
                                          excel="false" 
@@ -22,27 +22,63 @@
                                          copy="false"
                                          print="false">
 
-                                <b:dataTableColumn value="#{cliente.idClientes}"
-                                                   label="Identificación"
+                                <b:dataTableColumn value="#{cliente.USER_ID}"
+                                                   label="ID"
                                                    width="9%"/>
-                                <b:dataTableColumn value="#{cliente.nombreCliente}"
-                                                   label="Nombre"
+                                
+                                <b:dataTableColumn value="#{cliente.USER_NAME1}"
+                                                   label="PRIMER NOMBRE"
                                                    width="15%"/>
-                                <b:dataTableColumn value="#{cliente.direccion}"
-                                                   label="Direccion"
+                                
+                                <b:dataTableColumn value="#{cliente.USER_NAME2}"
+                                                   label="SEGUNDO NOMBRE"
                                                    width="19%"/>
-                                <b:dataTableColumn value="#{cliente.telefono}"
-                                                   label="Telefono"
+                                
+                                <b:dataTableColumn value="#{cliente.USER_LASTNAME1}"
+                                                   label="PRIMER APELLIDO"
                                                    width="19%"/>
-
-
+                                
+                                <b:dataTableColumn value="#{cliente.USER_LASTNAME2}"
+                                                   label="SEGUNDO APELLIDO"
+                                                   width="19%"/>
+                                
+                                <b:dataTableColumn value="#{cliente.USER_ID_CARD}"
+                                                   label="CEDULA"
+                                                   width="19%"/>
+                                
+                                <b:dataTableColumn value="#{cliente.USER_EMAIL}"
+                                                   label="EMAIL"
+                                                   width="19%"/>
+                                
+                                <b:dataTableColumn value="#{cliente.USER_AUTH_ID}"
+                                                   label="ID USER"
+                                                   width="19%"/>
+                                
+                                <b:dataTableColumn value="#{cliente.COUNTRY_ID}"
+                                                   label="ID PAIS"
+                                                   width="19%"/>
+                                
+                                <b:dataTableColumn value="#{cliente.PROVINCE_ID}"
+                                                   label="ID PROVINCIA"
+                                                   width="19%"/>
+                                
+                                <b:dataTableColumn value="#{cliente.CANTON_ID}"
+                                                   label="ID CANTON"
+                                                   width="19%"/>
+                                
+                                <b:dataTableColumn value="#{cliente.DISTRICT_ID}"
+                                                   label="ID DISTRITO"
+                                                   width="19%"/>
+                                
+                                <b:dataTableColumn value="#{cliente.USER_ADDRESS}"
+                                                   label="DIRECCION"
+                                                   width="19%"/>
 
                                 <b:dataTableColumn style="text-align: center"
                                                    label="Acción"
                                                    width="10%">
                                     <b:commandButton value="Editar"
-                                                     action="#{clientesController.editaClientes(cliente.idClientes)}" />                           
-
+                                                     action="#{clientesController.editaClientes(cliente.USER_ID)}" />                           
                                 </b:dataTableColumn>
 
 

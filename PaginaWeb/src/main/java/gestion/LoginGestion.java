@@ -37,7 +37,7 @@ public class LoginGestion {
             Logger.getLogger(LoginGestion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error:" + ex);
 
-        }//try/catch
+        }
 
         return usuario;
 

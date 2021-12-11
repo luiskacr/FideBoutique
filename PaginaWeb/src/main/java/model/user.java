@@ -2,21 +2,29 @@ package model;
 
 public class user {
 
-    //atributos
+    private int USER_AUTH_ID;
     private String USER_NAME;
     private String PASSWORD;
     private String USER_ROL;
-
-    //constructor vacio
+  
     public user() {
     }
-
-    public user(String USER_NAME, String PASSWORD, String USER_ROL) {
+    
+    public user(int USER_AUTH_ID, String USER_NAME, String PASSWORD, String USER_ROL) {
+        this.USER_AUTH_ID = USER_AUTH_ID;
         this.USER_NAME = USER_NAME;
         this.PASSWORD = PASSWORD;
         this.USER_ROL = USER_ROL;
     }
 
+    public int getUSER_AUTH_ID() {
+        return USER_AUTH_ID;
+    }
+
+    public void setUSER_AUTH_ID(int USER_AUTH_ID) {
+        this.USER_AUTH_ID = USER_AUTH_ID;
+    }
+    
     public String getUSER_NAME() {
         return USER_NAME;
     }

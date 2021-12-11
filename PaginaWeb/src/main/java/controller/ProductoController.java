@@ -95,7 +95,6 @@ public class ProductoController extends Productos implements Serializable {
     public List<String> getType() {
         return ProductoGestion.getType();
     }
-    //private List<String> type = ProductoGestion.getProveedor();
 
     public List<String> getDept() {
         return ProductoGestion.getDept();

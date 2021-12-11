@@ -14,10 +14,10 @@
 
                         <b:row>
                             <b:column medium-screen="2">
-                                <h:outputText value="Nombre Usuario:"/>                                    
+                                <h:outputText value="Nombre Usuario"/>                                    
                             </b:column>
                             <b:column medium-screen="4">
-                                <b:inputText placeholder="Usuario" id="usuario" required="true" value="#{userController.nombreUsuario}" autocomplete="false"/>                                    
+                                <b:inputText placeholder="Usuario" id="usuario" required="true" value="#{userController.USER_NAME}" autocomplete="false"/>                                    
                             </b:column>
                             <b:column medium-screen="6" style-class="message">
                                 <b:message for="usuario"/>
@@ -26,18 +26,29 @@
 
                         <b:row>
                             <b:column medium-screen="2">
-                                <h:outputText value="Rol:"/>                                    
+                                <h:outputText value="Contraseña"/>                                    
                             </b:column>
                             <b:column medium-screen="4">
-                                <b:selectOneMenu value="#{userController.idRol}" required="true">
-                                    <f:selectItem itemLabel="(Seleccione un Rol)" itemValue="" />
-                                    <f:selectItem itemLabel="ADMIN" itemValue="ADMIN" />
-                                    <f:selectItem itemLabel="RESPALDOS" itemValue="RESPALDOS" />
-                                    <f:selectItem itemLabel="VENDEDOR" itemValue="VENDEDOR"/>
-                                </b:selectOneMenu>
+                                <b:inputSecret placeholder="Contraseña" id="psw" required="true" value="#{userController.PASSWORD}" autocomplete="false" />                                    
                             </b:column>
                             <b:column medium-screen="6" style-class="message">
-                                <b:message for="rol"/>
+                                <b:message for="psw"/>
+                            </b:column>
+                        </b:row>
+
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Rol"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:selectOneMenu value="#{userController.USER_ROL}" id="rol" required="true" >
+                                    <f:selectItem itemLabel="(Seleccione un Rol)" itemValue="" />
+                                    <f:selectItems value="#{userController.rol}" />
+                                </b:selectOneMenu>
+                            </b:column>
+
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="type"/>
                             </b:column>
                         </b:row>
 
@@ -45,7 +56,6 @@
                             <b:column medium-screen="2"/>
                             <b:column medium-screen="4">
                                 <b:commandButton value="Actualizar" icon="refresh" look="success" style="width: 100px" action="#{userController.updateUser()}" > </b:commandButton>
-                                <b:commandButton value="Eliminar" icon="trash" look="danger" style="width: 100px" action="#{userController.deleteUser()}" > </b:commandButton>
                             </b:column>
                         </b:row>
                     </b:panel>

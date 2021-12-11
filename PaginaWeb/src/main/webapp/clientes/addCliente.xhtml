@@ -3,87 +3,209 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui">
-
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Insertar Cliente</title>
+        <title>AGREGAR CLIENTE</title>
     </h:head>
     <h:body>
         <ui:composition template="#{loginController.selectedTemplate}">
             <ui:define name="content">
-                <h:form id="insertaClientesForm">
+                <h:form id="addClientesForm">
                     <b:container fluid="true">
-                        <b:panel title="Clientes" look="primary">
-                            
-                            <b:row tooltip="La identificacion no se modifica">
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Identificacion" for="identificacion"/>                                    
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:inputText 
+                        <b:panel title="Clientes" look="info">
 
-                                        required="true"
-                                        placeholder="Identificacion" mask="999999999" id="identificacion"
-                                        value="#{clientesController.idClientes}"
-                                        />                                    
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="identificacion"/>
-                                </b:column>
-                            </b:row>
                             <b:row>
                                 <b:column medium-screen="2">
-                                    <h:outputText value="Nombre:"/>                                    
+                                    <h:outputText value="Primer Nombre"/>                                    
                                 </b:column>
                                 <b:column medium-screen="4">
-                                    <b:inputText placeholder="Nombre" id="nombre" required="true"
-                                                 value="#{clientesController.nombreCliente}" 
+                                    <b:inputText placeholder="Primer Nombre" id="nombre" required="true"
+                                                 value="#{clientesController.USER_NAME1}" 
                                                  autocomplete="false"/>                                    
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
                                     <b:message for="nombre"/>
                                 </b:column>
                             </b:row>
+                            <!--/////////////////////////////////////////////////-->
                             <b:row>
                                 <b:column medium-screen="2">
-                                    <h:outputText value="Direccion:"/>                                    
+                                    <h:outputText value="Segundo Nombre"/>                                    
                                 </b:column>
                                 <b:column medium-screen="4">
-                                    <b:inputText placeholder="Direccion" id="Direccion" required="true"
-                                                 value="#{clientesController.direccion}" 
+                                    <b:inputText placeholder="Segundo Nombre" id="nombre2" required="false"
+                                                 value="#{clientesController.USER_NAME2}" 
                                                  autocomplete="false"/>                                    
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
-                                    <b:message for="Direccion"/>
+                                    <b:message for="nombre2"/>
                                 </b:column>
                             </b:row>
+                            <!--/////////////////////////////////////////////////-->
                             <b:row>
                                 <b:column medium-screen="2">
-                                    <h:outputText value="Telefono:"/>                                    
+                                    <h:outputText value="Primer Apellido"/>                                    
                                 </b:column>
                                 <b:column medium-screen="4">
-                                    <b:inputText placeholder="Telefono" mask="99999999" id="telefono" required="true"
-                                                 value="#{clientesController.telefono}" 
+                                    <b:inputText placeholder="Nombre" id="ape" required="true"
+                                                 value="#{clientesController.USER_LASTNAME1}" 
                                                  autocomplete="false"/>                                    
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
-                                    <b:message for="Telefono"/>
+                                    <b:message for="ape"/>
                                 </b:column>
                             </b:row>
-
-
-
+                            <!--/////////////////////////////////////////////////-->
                             <b:row>
-
-
                                 <b:column medium-screen="2">
+                                    <h:outputText value="Segundo Apellido"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Segundo Apellido" id="ape2" required="true"
+                                                 value="#{clientesController.USER_LASTNAME2}" 
+                                                 autocomplete="false"/>                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="ape2"/>
+                                </b:column>
+                            </b:row>
+                            <!--/////////////////////////////////////////////////-->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Cedula"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Cedula" mask="999999999" id="ced" required="true"
+                                                 value="#{clientesController.USER_ID_CARD}" 
+                                                 autocomplete="false"/>                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="ced"/>
+                                </b:column>
+                            </b:row>
+                            <!--/////////////////////////////////////////////////-->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Email"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Email" id="email" required="true"
+                                                 value="#{clientesController.USER_EMAIL}" 
+                                                 autocomplete="false"/>                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="email"/>
+                                </b:column>
+                            </b:row>
+                            <!--/////////////////////////////////////////////////-->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID User"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{clientesController.USER_AUTH_ID}" id="auth" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{clientesController.userAuth}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="auth"/>
+                                </b:column>
+                            </b:row>
+                            <!--/////////////////////////////////////////////////-->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID País"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{clientesController.COUNTRY_ID}" id="CTY" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{clientesController.country}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="CTY"/>
+                                </b:column>
+                            </b:row>
+                            <!--/////////////////////////////////////////////////-->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID Provincia"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{clientesController.PROVINCE_ID}" id="prov" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{clientesController.prov}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="prov"/>
+                                </b:column>
+                            </b:row>
+                            <!--/////////////////////////////////////////////////-->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID Cantón"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{clientesController.CANTON_ID}" id="canto" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{clientesController.cant}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="canto"/>
+                                </b:column>
+                            </b:row>
+                            <!--/////////////////////////////////////////////////-->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID Distrito"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{clientesController.DISTRICT_ID}" id="dist" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{clientesController.dist}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="dist"/>
+                                </b:column>
+                            </b:row>
+                            <!--/////////////////////////////////////////////////-->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Dirección"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Dirección" id="dir" required="true"
+                                                 value="#{clientesController.USER_ADDRESS}" 
+                                                 autocomplete="false"/>                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="dir"/>
+                                </b:column>
+                            </b:row>
+                            <!--/////////////////////////////////////////////////-->
+
+                            <b:row> 
+                                <b:column>
                                     <b:commandButton value="Ingresar"
                                                      action="#{clientesController.insertaClientes()}"
                                                      look="primary"
-                                                     style="width: 100%"/>
+                                                     style="width: 33%">
+                                    </b:commandButton>
                                 </b:column>
-
-
+                            </b:row>
+                            <b:row>
+                                <b:column>
+                                    <b:commandButton value="Cancelar" 
+                                                     look="danger" 
+                                                     style="width: 33%"
+                                                     action="listCliente.xhtml">
+                                    </b:commandButton>
+                                </b:column>
                             </b:row>
 
                         </b:panel>
@@ -91,6 +213,7 @@
                 </h:form>                
             </ui:define>
         </ui:composition>
-
     </h:body>
 </html>
+
+

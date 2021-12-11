@@ -1,29 +1,18 @@
 package controller;
 
 import gestion.ClientesGestion;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.nio.file.Files;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
 import model.Clientes;
 
 @Named(value = "clientesController")
 @SessionScoped
 public class ClientesController extends Clientes implements Serializable {
-    
+
     public List<Clientes> getClientes() {
         return ClientesGestion.getClientes();
     }
@@ -32,10 +21,19 @@ public class ClientesController extends Clientes implements Serializable {
     public String editaClientes(String idClientes) {
         Clientes elClientes = ClientesGestion.getCliente(idClientes);
         if (elClientes != null) {
-            this.setIdClientes(elClientes.getIdClientes());
-            this.setNombreCliente(elClientes.getNombreCliente());
-            this.setDireccion(elClientes.getDireccion());
-            this.setTelefono(elClientes.getTelefono());
+            this.setUSER_ID(elClientes.getUSER_ID());
+            this.setUSER_NAME1(elClientes.getUSER_NAME1());
+            this.setUSER_NAME2(elClientes.getUSER_NAME2());
+            this.setUSER_LASTNAME1(elClientes.getUSER_LASTNAME1());
+            this.setUSER_LASTNAME2(elClientes.getUSER_LASTNAME2());
+            this.setUSER_ID_CARD(elClientes.getUSER_ID_CARD());
+            this.setUSER_EMAIL(elClientes.getUSER_EMAIL());
+            this.setUSER_AUTH_ID(elClientes.getUSER_AUTH_ID());
+            this.setCOUNTRY_ID(elClientes.getCOUNTRY_ID());
+            this.setPROVINCE_ID(elClientes.getPROVINCE_ID());
+            this.setDISTRICT_ID(elClientes.getDISTRICT_ID());
+            this.setCANTON_ID(elClientes.getCANTON_ID());
+            this.setUSER_ADDRESS(elClientes.getUSER_ADDRESS());
             return "editCliente.xhtml";
         } else {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -81,61 +79,29 @@ public class ClientesController extends Clientes implements Serializable {
             FacesContext.getCurrentInstance().addMessage("editaClientesForm:identificacion", msg);
             return "editCliente.xhtml";
         }
-
-    }
-    
-       
-     private boolean noImprimir = true;
-    
-     public boolean isNoImprimir() {
-        return noImprimir;
     }
 
-    public void setNoImprimir(boolean noImprimir) {
-        this.noImprimir = noImprimir;
+    //---------------------------------------------------------------
+    // SELECT DE ID's FORANEAS
+    //---------------------------------------------------------------
+    public List<String> getUserAuth() {
+        return ClientesGestion.getUserAuth();
     }
-    
-    public void respaldoClientes() {
-        ZipOutputStream out = null;
-        try {
-            String json = ClientesGestion.generarJsonClientes();
-            File f = new File(FacesContext.getCurrentInstance().
-                    getExternalContext().getRealPath("/respaldo") + "Clientes.zip");
-            out = new ZipOutputStream(new FileOutputStream(f));
-            ZipEntry e = new ZipEntry("Clientes.json");
-            out.putNextEntry(e);
-            byte[] data = json.getBytes();
-            out.write(data, 0, data.length);
-            out.closeEntry();
-            out.close();
-            File zipPath = new File(FacesContext.getCurrentInstance().getExternalContext()
-                    .getRealPath("/respaldo") + "Clientes.zip");
-            byte[] zip = Files.readAllBytes(zipPath.toPath());
 
-            HttpServletResponse respuesta
-                    = (HttpServletResponse) FacesContext.getCurrentInstance()
-                            .getExternalContext().getResponse();
-            ServletOutputStream sos = respuesta.getOutputStream();
-            respuesta.setContentType("application/pdf");
-            respuesta.setHeader("Content-disposition", "attachment; filename=Clientes.zip");
-            sos.write(zip);
-            sos.flush();
-            FacesContext.getCurrentInstance().responseComplete();
+    public List<String> getCountry() {
+        return ClientesGestion.getCountry();
+    }
 
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ClientesController.class.getName()).log(
-                    Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ClientesController.class.getName()).log(
-                    Level.SEVERE, null, ex);
-        } finally {
-            try {
-                out.close();
-            } catch (IOException ex) {
-                Logger.getLogger(ClientesController.class.getName()).log(
-                        Level.SEVERE, null, ex);
-            }
-        }
+    public List<String> getProv() {
+        return ClientesGestion.getProv();
+    }
+
+    public List<String> getDist() {
+        return ClientesGestion.getDist();
+    }
+
+    public List<String> getCant() {
+        return ClientesGestion.getCant();
     }
 
 }

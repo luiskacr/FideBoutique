@@ -1,0 +1,104 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="#{loginController.selectedTemplate}">
+            <ui:define name="content">
+                <h:form id="insertaFacturaForm">
+                    <b:container fluid="true">
+                        <b:panel title="EDITAR FACTURA" look="info">
+
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID Cliente"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{facturaController.USER_ID}" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{facturaController.user}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="usuario"/>
+                                </b:column>
+                            </b:row>
+
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Total"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText mask="numeric" required="true"
+                                                 value="#{facturaController.SALE_TOTAL}" 
+                                                 autocomplete="false"/>                                    
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="Total"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID Descuento"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{facturaController.DISCOUNT_ID}" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{facturaController.disc}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="usuario"/>
+                                </b:column>
+                            </b:row>
+
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID Tipo de Pago"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{facturaController.PAYMENT_TYPE_ID}" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{facturaController.payType}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="usuario"/>
+                                </b:column>
+                            </b:row>
+
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID Cliente"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{facturaController.PAYMENT_STATE_ID}" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{facturaController.payState}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="usuario"/>
+                                </b:column>
+                            </b:row>
+
+                            <b:row>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Ingresar" look="success" iconAwesome="far fa-check-square" style="width:100px; margin:1px" action="#{facturaController.updateFactura()}"></b:commandButton>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Cancelar" look="danger" iconAwesome="far fa-window-close" style="width:100px; margin:1px" action="listFacturas.xhtml"></b:commandButton>
+                                </b:column>
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>                
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

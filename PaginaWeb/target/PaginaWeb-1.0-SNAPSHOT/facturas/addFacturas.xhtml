@@ -5,71 +5,34 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:body>
-        <ui:composition template="./resources/templates/plantillaADMIN.xhtml">
+        <ui:composition template="#{loginController.selectedTemplate}">
             <ui:define name="content">
                 <h:form id="insertaFacturaForm">
                     <b:container fluid="true">
-                        <b:panel title="Facturas" look="primary">
+                        <b:panel title="AÑADIR FACTURAS" look="info">
+
                             <b:row>
                                 <b:column medium-screen="2">
-                                    <h:outputText value="ID Vendedor:"/>                                    
+                                    <h:outputText value="ID Cliente"/>                                    
                                 </b:column>
                                 <b:column medium-screen="4">
-                                    <b:selectOneMenu value="#{facturaController.idUsuario}" required="true" >
+                                    <b:selectOneMenu value="#{facturaController.USER_ID}" required="true" >
                                         <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
-                                        <f:selectItems value="#{facturaController.id}" />
+                                        <f:selectItems value="#{facturaController.user}" />
                                     </b:selectOneMenu>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
                                     <b:message for="usuario"/>
                                 </b:column>
                             </b:row>
+
                             <b:row>
                                 <b:column medium-screen="2">
-                                    <h:outputText value="Nombre Cliente:"/>                                    
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:inputText placeholder="Nombre Cliente" id="Nombre" required="true"
-                                                 value="#{facturaController.nombreCliente}" 
-                                                 autocomplete="false"/>                                    
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="Nombre Cliente"/>
-                                </b:column>
-                            </b:row>
-                            <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputText value="Dirección:"/>                                    
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:inputText placeholder="Dirección" id="direc" required="true"
-                                                 value="#{facturaController.direccion}" 
-                                                 autocomplete="false"/>                                    
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="direc"/>
-                                </b:column>
-                            </b:row>
-                            <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputText value="Detalle:"/>                                    
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:inputText placeholder="Detalle" id="detalle" required="true"
-                                                 value="#{facturaController.detalle}" 
-                                                 autocomplete="false"/>                                    
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="Detalle"/>
-                                </b:column>
-                            </b:row>
-                            <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputText value="Total:"/>                                    
+                                    <h:outputText value="Total"/>                                    
                                 </b:column>
                                 <b:column medium-screen="4">
                                     <b:inputText mask="numeric" required="true"
-                                                 value="#{facturaController.total}" 
+                                                 value="#{facturaController.SALE_TOTAL}" 
                                                  autocomplete="false"/>                                    
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
@@ -77,18 +40,61 @@
                                 </b:column>
                             </b:row>
                             <b:row>
-
-
                                 <b:column medium-screen="2">
-                                    <b:commandButton value="Ingresar"
-                                                     action="#{facturaController.insertaFactura()}"
-                                                     look="primary"
-                                                     style="width: 100%"/>
+                                    <h:outputText value="ID Descuento"/>                                    
                                 </b:column>
-
-
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{facturaController.DISCOUNT_ID}" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{facturaController.disc}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="usuario"/>
+                                </b:column>
                             </b:row>
 
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID Tipo de Pago"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{facturaController.PAYMENT_TYPE_ID}" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{facturaController.payType}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="usuario"/>
+                                </b:column>
+                            </b:row>
+
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="ID Cliente"/>                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{facturaController.PAYMENT_STATE_ID}" required="true" >
+                                        <f:selectItem itemLabel="(Seleccione un ID)" itemValue="" />
+                                        <f:selectItems value="#{facturaController.payState}" />
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="usuario"/>
+                                </b:column>
+                            </b:row>
+
+                            <b:row>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Ingresar" look="success" iconAwesome="far fa-check-square" style="width:100px; margin:1px" action="#{facturaController.insertaFactura()}"></b:commandButton>
+                                </b:column>
+                            </b:row>
+                            
+                            <b:row>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Cancelar" look="danger" iconAwesome="far fa-window-close" style="width:100px; margin:1px" action="listFacturas.xhtml"></b:commandButton>
+                                </b:column>
+                            </b:row>
                         </b:panel>
                     </b:container>
                 </h:form>                

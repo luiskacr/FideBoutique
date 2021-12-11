@@ -10,12 +10,13 @@
                 <h:form id="addUserForm">
                     <b:panel title="AGREGAR USUARIO" look="success" collapsible="false">
 
+
                         <b:row>
                             <b:column medium-screen="2">
-                                <h:outputText value="Nombre de Usuario:"/>                                    
+                                <h:outputText value="Nombre Usuario"/>                                    
                             </b:column>
                             <b:column medium-screen="4">
-                                <b:inputText placeholder="Usuario" id="usuario" required="true" value="#{userController.nombreUsuario}" autocomplete="false"/>                                    
+                                <b:inputText placeholder="Usuario" id="usuario" required="true" value="#{userController.USER_NAME}" autocomplete="false"/>                                    
                             </b:column>
                             <b:column medium-screen="6" style-class="message">
                                 <b:message for="usuario"/>
@@ -24,10 +25,10 @@
 
                         <b:row>
                             <b:column medium-screen="2">
-                                <h:outputText value="Contraseña:"/>                                    
+                                <h:outputText value="Contraseña"/>                                    
                             </b:column>
                             <b:column medium-screen="4">
-                                <b:inputSecret placeholder="Contraseña" id="psw" required="true" value="#{userController.contasena}" autocomplete="false" />                                    
+                                <b:inputSecret placeholder="Contraseña" id="psw" required="true" value="#{userController.PASSWORD}" autocomplete="false" />                                    
                             </b:column>
                             <b:column medium-screen="6" style-class="message">
                                 <b:message for="psw"/>
@@ -36,22 +37,24 @@
 
                         <b:row>
                             <b:column medium-screen="2">
-                                <h:outputText value="Rol:"/>                                    
+                                <h:outputText value="Rol"/>                                    
                             </b:column>
                             <b:column medium-screen="4">
-
-                                <b:selectOneMenu value="#{userController.idRol}" required="true">
+                                <b:selectOneMenu value="#{userController.USER_ROL}" id="rol" required="true" >
                                     <f:selectItem itemLabel="(Seleccione un Rol)" itemValue="" />
-                                    <f:selectItem itemLabel="ADMIN" itemValue="ADMIN" />
-                                    <f:selectItem itemLabel="RESPALDOS" itemValue="RESPALDOS" />
-                                    <f:selectItem itemLabel="VENDEDOR" itemValue="VENDEDOR"/>
+                                    <f:selectItems value="#{userController.rol}" />
                                 </b:selectOneMenu>
                             </b:column>
+
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="type"/>
+                            </b:column>
                         </b:row>
+
                         <b:row>
                             <b:column medium-screen="2"/>
                             <b:column medium-screen="4">
-                                <b:commandButton value="Ingresar" look="primary" style="width: 100px" action="#{userController.insertUser()}" > </b:commandButton>
+                                <b:commandButton value="Ingresar" look="primary" style="width: 100px" action="#{userController.insertUser()}"></b:commandButton>
                             </b:column>
                         </b:row>
                     </b:panel>

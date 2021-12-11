@@ -28,7 +28,7 @@ public class LoginController extends user implements Serializable {
 
         if (usuario != null) {
 
-            this.setUSER_NAME(usuario.getUSER_NAME());
+        this.setUSER_NAME(usuario.getUSER_NAME());
             this.setUSER_ROL(usuario.getUSER_ROL());
             selectedTemplate = "../resources/templates/plantillaADMIN.xhtml";
             selectedTemplatePrincipal = "./resources/templates/plantillaADMIN.xhtml";

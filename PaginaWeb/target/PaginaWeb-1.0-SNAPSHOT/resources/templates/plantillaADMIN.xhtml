@@ -20,7 +20,7 @@
                             <a href="#{request.contextPath}/faces/principal.xhtml"><b:image library="img" name="camisa.png" style-class="img1"/> </a>
                         </b:navbarLinks>
                         <b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
-                            <b:dropMenu value="Inventario" icon-awesome="fas fa-wrench">
+                            <b:dropMenu value="Inventario">
                                 <b:navLink value="Inventario" href="#{request.contextPath}/faces/productos/listProductos.xhtml"/>
                                 <b:navLink value="Agregar Inventario" href="#{request.contextPath}/faces/productos/addProducto.xhtml"/>
                             </b:dropMenu>
@@ -28,11 +28,11 @@
                             <b:dropMenu value="Clientes">
                                 <b:navLink value="Lista" href=" #{request.contextPath}/faces/clientes/listCliente.xhtml"/>
                                 <b:navLink value="Añadir Nueva Entrada" href="#{request.contextPath}/faces/clientes/addCliente.xhtml"/>
-                                <b:navLink value="Buscar Clientes" href="#{request.contextPath}/faces/clientes/buscarCliente.xhtml"/>
                             </b:dropMenu>
                         </b:navbarLinks>
                         <b:navbarLinks pull="right" style-class="hidden-xs">
                             <b:dropMenu value=" ${loginController.USER_NAME} " icon-awesome="fa-user-circle">
+                                <b:navLink value="Administrar Usuarios" icon-awesome="fas fa-wrench" href="#{request.contextPath}/faces/usuarios/usuarios.xhtml"/>
                                 <b:navLink value="Salir" icon-awesome="fa-sign-out" href="#{request.contextPath}/faces/index.xhtml"/>
                             </b:dropMenu>
                         </b:navbarLinks>

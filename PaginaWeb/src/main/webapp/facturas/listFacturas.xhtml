@@ -8,7 +8,7 @@
             <ui:define name="content">
                 <h:form>
                     <b:container fluid="true">
-                        <b:panel title="Lista de Facturas" look="primary" collapsible="false">
+                        <b:panel title="Lista de Facturas" look="info" collapsible="false">
                             <b:dataTable value="#{facturaController.facturas}"
                                          var="factura" 
                                          excel="true" 
@@ -18,27 +18,33 @@
                                          copy="true"
                                          print="true">
 
-                                <b:dataTableColumn value="#{factura.USER_ID}"
+                                <b:dataTableColumn value="#{factura.ID_INVOICE}"
                                                    label="ID"
                                                    width="9%"/>
+                                <b:dataTableColumn value="#{factura.USER_ID}"
+                                                   label="ID CLIENTE"
+                                                   width="9%"/>
                                 <b:dataTableColumn value="#{factura.DATE_SELL}"
-                                                   label="ID Vendedor"
+                                                   label="FECHA VENTA"
                                                    width="9%"/>
                                 <b:dataTableColumn value="#{factura.SALE_TOTAL}"
-                                                   label="Total"
+                                                   label="TOTAL"
                                                    width="15%"/>
                                 <b:dataTableColumn value="#{factura.DISCOUNT_ID}"
                                                    label="ID Descuento"
                                                    width="19%"/>
                                 <b:dataTableColumn value="#{factura.PAYMENT_TYPE_ID}"
-                                                   label="ID Tipo de Pago"
+                                                   label="ID TIPO DE PAGO"
                                                    width="19%"/>
                                 <b:dataTableColumn value="#{factura.PAYMENT_STATE_ID}"
-                                                   label="ID Estado del Pago"
+                                                   label="ID ESTADO DEL PAGO"
                                                    width="19%"/>
 
                                 <b:dataTableColumn style="text-align: center" label="" width="2%">
-                                    <b:commandButton value="Eliminar" look="danger" icon="trash" action="#{facturaController.delFactura(factura.idFactura)}"/>      
+                                    <b:commandButton value="EDITAR" look="success" icon="edit" action="#{facturaController.editFactura(factura.ID_INVOICE)}"/>      
+                                </b:dataTableColumn>
+                                <b:dataTableColumn style="text-align: center" label="" width="2%">
+                                    <b:commandButton value="Eliminar" look="danger" icon="trash" action="#{facturaController.delFactura(factura.ID_INVOICE)}"/>      
                                 </b:dataTableColumn>
 
                             </b:dataTable>
